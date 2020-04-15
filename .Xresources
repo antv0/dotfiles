@@ -1,0 +1,50 @@
+! special
+*.foreground:   #ffffff
+*.background:   #212121
+*.cursorColor:  #ffffff
+
+! black
+*.color0:       #222222
+*.color8:       #666666
+
+! red
+*.color1:       #e84f4f
+*.color9:       #d23d3d
+
+! green
+*.color2:       #b7ce42
+*.color10:      #bde077
+
+! yellow
+*.color3:       #fea63c
+*.color11:      #ffe863
+
+! blue
+*.color4:       #66aabb
+*.color12:      #aaccbb
+
+! magenta
+*.color5:       #b7416e
+*.color13:      #e16a98
+
+! cyan
+*.color6:       #6d878d
+*.color14:      #42717b
+
+! white
+*.color7:       #dddddd
+*.color15:      #cccccc
+
+! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+rofi.color-normal: #202020,  #ebdbb2,  #282828,  #586e75,  #eee8d5
+rofi.color-urgent: #202020,  #dc322f,  #282828,  #dc322f,  #eee8d5
+rofi.color-active: #202020,  #268bd2,  #282828,  #268bd2,  #eee8d5
+
+! rofi.color-normal: #202020,  #ebdbb2,  #282828,  #586e75,  #eee8d5
+! rofi.color-urgent: #202020,  #dc322f,  #282828,  #dc322f,  #fdf6e3
+! rofi.color-active: #202020,  #268bd2,  #282828,  #268bd2,  #fdf6e3
+
+!                  'background', 'border', 'separator'
+rofi.color-window: #202020,      #161616,  #363636
+
+! rofi.color-window: #202020,      #161616,  #363636

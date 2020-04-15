@@ -1,0 +1,42 @@
+#!/bin/bash
+
+if [[ $EUID -ne 0 ]]; then
+  echo "You must run this with superuser privileges." 2>&1
+  exit 1
+fi
+
+echo '[Unit]
+Description=Prepare one time login
+
+[Service]
+Type=oneshot
+ExecStart=-/bin/touch /tmp/autologin
+ExecStart=-/bin/chown '$SUDO_USER':users /tmp/autologin
+
+[Install]
+WantedBy=basic.target' > /etc/systemd/system/onetimelogin.service
+
+systemctl enable onetimelogin.service
+
+mkdir -p /etc/systemd/system/getty@tty1.service.d/
+
+echo '[Service]
+ExecStart=
+ExecStart=-/bin/autologin.sh %I' > /etc/systemd/system/getty@tty1.service.d/autologin.conf
+
+echo '#!/bin/sh
+
+if [ -f /tmp/autologin ]
+then
+        exec /sbin/agetty --autologin '$SUDO_USER' --noclear $1
+else
+        exec /sbin/agetty --noclear $1
+fi' > /bin/autologin.sh
+
+chmod +x /bin/autologin.sh
+
+#insert this in .zprofile :
+#if [ -f /tmp/autologin ]
+#then
+#        rm /tmp/autologin
+#fi

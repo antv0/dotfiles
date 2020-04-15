@@ -1,0 +1,3 @@
+XDG_DESKTOP_DIR="$HOME/"
+XDG_TEMPLATES_DIR="$HOME/.local/share/templates"
+

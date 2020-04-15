@@ -1,0 +1,3 @@
+#!/bin/sh
+
+scanimage --format=png --mode Color --resolution 300 -x 210 -y 297 > scan.png

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
+gsettings set org.nemo.list-view default-zoom-level small
+gsettings set org.nemo.preferences default-folder-viewer list-view
+gsettings set org.nemo.preferences size-prefixes base-2
+

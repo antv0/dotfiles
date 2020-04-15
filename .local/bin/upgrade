@@ -1,0 +1,8 @@
+#!/bin/sh
+
+printf "Début de la mise à jour.\\n"
+
+sudo pacman -Syu
+
+printf "\\nMise à jour terminée.\\n<Entrée> pour quitter.\\n\\n"
+read -r

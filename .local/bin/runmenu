@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rofi -matching normal -font "Inconsolata 20" -sort -show run

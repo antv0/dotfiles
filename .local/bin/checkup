@@ -1,0 +1,25 @@
+#!/bin/sh
+# Syncs repositories and downloads updates, meant to be run as a cronjob.
+
+ping -q -c 1 archlinux.org > /dev/null || exit
+
+if pgrep dunst;
+then notify-send "📦 Synchronisation des bases de données de paquets…" "Recherche de mises à jour de paquets...";
+else echo "📦 Recherche de mises à jour de paquets..."; fi
+
+sudo pacman -Syyuw --noconfirm || if pgrep dunst; then notify-send "Error downloading updates.
+
+Check your internet connection, if pacman is already running, or run update manually to see errors."; else echo "Error downloading updates.
+
+Check your internet connection, if pacman is already running, or run update manually to see errors."; fi
+
+if pacman -Qu | grep -v "\[ignored\]"
+then
+    if pgrep dunst;
+    then notify-send "🎁 Bases de données Sync" "Mises à jour disponibles.";
+    else echo "🎁 Mises à jour disponibles."; fi
+else
+    if pgrep dunst;
+    then notify-send "📦 Bases de données Sync"  "Pas de paquets à mettre à jour.";
+    else echo "📦 Pas de paquets à mettre à jour."; fi
+fi
