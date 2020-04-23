@@ -1,9 +1,8 @@
 #!/bin/sh
 
-# A UI for detecting and selecting all displays.
-# Probes xrandr for connected displays and lets user select one to use.
-# User may also select "manual selection" which opens arandr.
-# I plan on adding a routine from multi-monitor setups later.
+# A UI for detecting and selecting all displays. Probes xrandr for connected
+# displays and lets user select one to use. User may also select "manual
+# selection" which opens arandr.
 
 twoscreen() { # If multi-monitor is selected and there are two screens.
 
@@ -70,4 +69,4 @@ esac
 
 setbg		# Fix background if screen size/arangement has changed.
 remaps		# Re-remap keys if keyboard added (for laptop bases)
-pgrep -x dunst >/dev/null && killall dunst && setsid dunst & # Restart dunst to ensure proper location on screen
+{ killall dunst ; setsid dunst & } >/dev/null 2>&1 # Restart dunst to ensure proper location on screen

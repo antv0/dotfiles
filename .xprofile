@@ -1,14 +1,13 @@
 #!/bin/sh
 
-setbg &		# Set the background
-# Switch to FR 
-setxkbmap -layout fr
-# xrandr --output HDMI-0 --mode 3440x1440 --rate 100 --primary &
+startbar &
+setbackground &		# Set the background
+setxkbmap -layout fr # Switch to FR 
 # xrandr --rate 100 &
+# xrandr --output HDMI-0 --mode 3440x1440 --rate 100 --primary &
 xset r rate 300 50 &	# Speed xrate up
 unclutter &		# Remove mouse when idle
-xcompmgr &		# xcompmgr for transparency
-# compton & #--blur-background --blur-kern=$(compton-gen.py) & #compton with nice blur. High gpu usage.
+picom &		# xcompmgr for transparency
 dunst &			# dunst for notifications
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 numlockx &

@@ -1,10 +1,9 @@
 # vim: filetype=i3config
 
 # #---Basic Definitions---# #
-for_window [class="^.*"] border pixel 1, move position center
-gaps inner 5
+for_window [class="^.*"] border pixel 3, move position center
+gaps inner 15
 gaps outer 0
-set $term --no-startup-id $TERMINAL
 set $mod Mod4
 focus_follows_mouse no
 
@@ -14,111 +13,106 @@ for_window [instance="dropdown_*"] floating enable
 for_window [instance="dropdown_*"] move scratchpad
 for_window [instance="dropdown_*"] sticky enable
 for_window [instance="dropdown_*"] scratchpad show
-for_window [instance="dropdown_tmuxdd"] resize set 625 450
-for_window [instance="dropdown_dropdowncalc"] resize set 800 300
-for_window [instance="dropdown_tmuxdd"] border pixel 3
-for_window [instance="dropdown_dropdowncalc"] border pixel 2
 for_window [instance="dropdown_*"] move position center
-
-exec_always --no-startup-id launchbar
-
-#  bar
-	# font pango:mono 10
-	# status_command i3blocks
-	# position bottom
-	# mode dock
-	# modifier None
-# }
+for_window [class="Matplotlib"] floating enable
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
 # # ---Basic Bindings---# #
-bindsym $mod+Return 		exec $term
-bindsym $mod+Shift+Return	exec --no-startup-id samedir
 
-bindsym $mod+a 				floating toggle
-bindsym $mod+space			focus mode_toggle
-
-#STOP/HIDE EVERYTHING:
-bindsym $mod+Shift+Delete	exec --no-startup-id lmc truemute ; exec --no-startup-id lmc pause ; exec --no-startup-id pauseallmpv; workspace 0; exec $term -e htop ; exec $term -e $FILE
+bindsym $mod+a              floating toggle
+bindsym $mod+space          focus mode_toggle
 
 # #---Letter Key Bindings---# #
-bindsym $mod+q				[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
-bindsym $mod+Shift+q		[con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
+bindsym $mod+q              [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+bindsym $mod+Shift+q        [con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
 
-bindsym $mod+Shift+r		exec --no-startup-id winresize
+bindsym $mod+Tab            split toggle
+bindsym $mod+t              layout toggle
+bindsym $mod+Shift+t        border toggle
 
-bindsym $mod+Tab			split toggle
-bindsym $mod+t 				layout toggle
-bindsym $mod+Shift+t 		border toggle
+bindsym $mod+Ctrl+h         exec --no-startup-id i3resize left
+bindsym $mod+Ctrl+j         exec --no-startup-id i3resize down
+bindsym $mod+Ctrl+k         exec --no-startup-id i3resize up
+bindsym $mod+Ctrl+l         exec --no-startup-id i3resize right
 
-bindsym $mod+Ctrl+h		exec --no-startup-id i3resize left
+bindsym $mod+s              gaps inner current plus 5
+bindsym $mod+Shift+s        gaps inner current minus 5
 
-bindsym $mod+u				exec --no-startup-id ddspawn bash
-bindsym $mod+Ctrl+j		exec --no-startup-id i3resize down
+bindsym $mod+f              fullscreen toggle
 
-bindsym $mod+Ctrl+k		exec --no-startup-id i3resize up
+# #---hjkl Keys---# #
+bindsym $mod+h              focus left
+bindsym $mod+j              focus down
+bindsym $mod+k              focus up
+bindsym $mod+l              focus right
 
-#bindsym $mod+o				sticky toggle
-bindsym $mod+Ctrl+l		exec --no-startup-id i3resize right
+bindsym $mod+Shift+h        move left 30
+bindsym $mod+Shift+j        move down 30
+bindsym $mod+Shift+k        move up 30
+bindsym $mod+Shift+l        move right 30
 
-#bindsym $mod+a				exec --no-startup-id ddspawn dropdowncalc -f mono:pixelsize=24
+# #---Arrow Keys---# #
+bindsym $mod+Left           focus left
+bindsym $mod+Down           focus down
+bindsym $mod+Up             focus up
+bindsym $mod+Right          focus right
 
-bindsym $mod+s				gaps inner current plus 5
-bindsym $mod+Shift+s		gaps inner current minus 5
+bindsym $mod+Shift+Left     move left 30
+bindsym $mod+Shift+Down     move down 30
+bindsym $mod+Shift+Up       move up 30
+bindsym $mod+Shift+Right    move right 30
 
-#bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Ctrl+Left          exec --no-startup-id i3resize left
+bindsym $mod+Ctrl+Right         exec --no-startup-id i3resize right
+bindsym $mod+Ctrl+Up            exec --no-startup-id i3resize up
+bindsym $mod+Ctrl+Down          exec --no-startup-id i3resize down
 
-bindsym $mod+f				fullscreen toggle
 
-bindsym $mod+h				focus left
-bindsym $mod+Shift+h		move left 30
-#bindsym $mod+Ctrl+h			move workspace to output left
+# #---Start Applpications---# #
+bindsym $mod+Return             exec --no-startup-id $TERMINAL
+bindsym $mod+Shift+Return       exec --no-startup-id $TERMINAL -d $(currentdir)
+bindsym $mod+z                  exec --no-startup-id ddspawn $SHELL
+bindsym $mod+w                  exec --no-startup-id $BROWSER
+bindsym $mod+Shift+w            exec --no-startup-id firefox --private-window www.duckduckgo.com
+bindsym $mod+m                  exec --no-startup-id nemo
+bindsym $mod+i                  exec --no-startup-id thunderbird
+bindsym $mod+Shift+e            exec --no-startup-id dmenuunicode
+bindsym $mod+d                  exec --no-startup-id runmenu
+bindsym $mod+Ctrl+m             exec --no-startup-id ddspawn pulsemixer
+bindsym $mod+x                  exec --no-startup-id keepmenu
+bindsym $mod+Print              exec --no-startup-id screenshot
+bindsym $mod+b                  exec --no-startup-id bartoggle
 
-bindsym $mod+j				focus down
-bindsym $mod+Shift+j		move down 30
-#bindsym $mod+Ctrl+j		move workspace to output down
+# #---XF86 keys---# #
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume  exec amixer -q sset Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer -q sset Master toggle && pkill -SIGRTMIN+10 i3blocks
 
-bindsym $mod+k				focus up
-bindsym $mod+Shift+k		move up 30
-#bindsym $mod+Ctrl+k			move workspace to output up
+#Sreen brightness controls
+bindsym XF86MonBrightnessUp      exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown        exec light -U 10 # decrease screen brightness
 
-bindsym $mod+l				focus right
-bindsym $mod+Shift+l		move right 30
-#bindsym $mod+Ctrl+l			move workspace to output right
 
-bindsym $mod+z				gaps outer current plus 5
-bindsym $mod+Shift+z		gaps outer current minus 5
+# Media player controls
+bindsym XF86AudioPlay           exec playerctl play
+bindsym XF86AudioPause          exec playerctl pause
+bindsym XF86AudioNext           exec playerctl next
+bindsym XF86AudioPrev           exec playerctl previous
+bindsym XF86TouchpadToggle      exec touchpadtoggle
 
-#bindsym $mod+c				exec --no-startup-id cabl
+# #---Function Buttons---# #
+bindsym $mod+F1         exec --no-startup-id groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf -Kutf8 | zathura -
+bindsym $mod+F2         exec --no-startup-id displayselect
+bindsym $mod+F3         restart
+bindsym $mod+F9         exec --no-startup-id dmenumount
+bindsym $mod+F10        exec --no-startup-id dmenuumount
+bindsym $mod+F11        exec --no-startup-id ducksearch
+bindsym $mod+F12        exec --no-startup-id $term -e nmtui
 
-#bindsym $mod+v				exec --no-startup-id $term -e $EDITOR -c "VimwikiIndex"
+# bindsym $mod+Tab       workspace back_and_forth
 
-bindsym $mod+b				bar mode toggle
-#bindsym $mod+Shift+b		floating toggle; sticky toggle; exec --no-startup-id hover left
-
-#bindsym $mod+Shift+n		floating toggle; sticky toggle; exec --no-startup-id hover right
-
-# #---Workspace Bindings---# #
-#bindsym $mod+Home		workspace $ws1
-#bindsym $mod+Shift+Home		move container to workspace $ws1
-#bindsym $mod+End		workspace $ws10
-#bindsym $mod+Shift+End		move container to workspace $ws10
-#bindsym $mod+Prior		workspace prev
-#bindsym $mod+Shift+Prior	move container to workspace prev
-#bindsym $mod+Next		workspace next
-#bindsym $mod+Shift+Next		move container to workspace next
-#bindsym $mod+Tab		workspace back_and_forth
-#bindsym $mod+XF86Back		workspace prev
-#bindsym $mod+Shift+XF86Back	move container to workspace prev
-#bindsym $mod+XF86Forward	workspace next
-#bindsym $mod+Shift+XF86Forward	move container to workspace next
-#bindsym $mod+semicolon		workspace next
-#bindsym $mod+Shift+Return	split horizontal ;; exec $term
-#bindsym $mod+slash		split vertical ;; exec $term
-#bindsym $mod+Shift+slash	kill
-#bindsym $mod+backslash		workspace back_and_forth
 
 set $ws0 "0"
 set $ws1 "1"
@@ -139,65 +133,31 @@ bindsym Ctrl+Mod1+Shift+Right move container to workspace next, workspace next
 bindsym Ctrl+Mod1+Shift+Left move container to workspace prev, workspace prev
 
 # switch to workspace
-bindsym $mod+twosuperior		workspace $ws0
-bindsym $mod+1		workspace $ws1
-bindsym $mod+2		workspace $ws2
-bindsym $mod+3		workspace $ws3
-bindsym $mod+4		workspace $ws4
-bindsym $mod+5		workspace $ws5
-bindsym $mod+6		workspace $ws6
-bindsym $mod+7		workspace $ws7
-bindsym $mod+8		workspace $ws8
-bindsym $mod+9		workspace $ws9
+bindsym $mod+twosuperior        workspace $ws0
+bindsym $mod+1      workspace $ws1
+bindsym $mod+2      workspace $ws2
+bindsym $mod+3      workspace $ws3
+bindsym $mod+4      workspace $ws4
+bindsym $mod+5      workspace $ws5
+bindsym $mod+6      workspace $ws6
+bindsym $mod+7      workspace $ws7
+bindsym $mod+8      workspace $ws8
+bindsym $mod+9      workspace $ws9
 
 # move focused container to workspace
-bindsym $mod+Shift+twosuperior	move container to workspace $ws0
-bindsym $mod+Shift+1	move container to workspace $ws1
-bindsym $mod+Shift+2	move container to workspace $ws2
-bindsym $mod+Shift+3	move container to workspace $ws3
-bindsym $mod+Shift+4	move container to workspace $ws4
-bindsym $mod+Shift+5	move container to workspace $ws5
-bindsym $mod+Shift+6	move container to workspace $ws6
-bindsym $mod+Shift+7	move container to workspace $ws7
-bindsym $mod+Shift+8	move container to workspace $ws8
-bindsym $mod+Shift+9	move container to workspace $ws9
+bindsym $mod+Shift+twosuperior  move container to workspace $ws0
+bindsym $mod+Shift+1    move container to workspace $ws1
+bindsym $mod+Shift+2    move container to workspace $ws2
+bindsym $mod+Shift+3    move container to workspace $ws3
+bindsym $mod+Shift+4    move container to workspace $ws4
+bindsym $mod+Shift+5    move container to workspace $ws5
+bindsym $mod+Shift+6    move container to workspace $ws6
+bindsym $mod+Shift+7    move container to workspace $ws7
+bindsym $mod+Shift+8    move container to workspace $ws8
+bindsym $mod+Shift+9    move container to workspace $ws9
 
-for_window [class="Pinentry"] sticky enable
-for_window [class="sent"] border pixel 0px
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600
 for_window [window_role="GtkFileChooserDialog"] move position center
-for_window [title="Default - Wine desktop"] floating enable
-# for_window [title="PasswordSafe*"] border none
-for_window [class="Pwsafe"] floating enable, resize set 400 800
-# for_window [class="Steam"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="steam_app_384180"] floating enable
-for_window [class="Nemo-desktop"] floating enable 
-
-# #---Function Buttons---# #
-bindsym $mod+F3			restart
-bindsym $mod+F1 		exec --no-startup-id groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf -Kutf8 | zathura -
-bindsym $mod+F2 		exec --no-startup-id displayselect
-bindsym $mod+F9 		exec --no-startup-id dmenumount
-bindsym $mod+F10 		exec --no-startup-id dmenuumount
-bindsym $mod+F11 		exec --no-startup-id ducksearch
-bindsym $mod+F12 		exec --no-startup-id $term -e nmtui
-
-# #---Arrow Keys---# #
-bindsym $mod+Left			focus left
-#bindsym $mod+Ctrl+Left		move workspace to output left
-bindsym $mod+Down			focus down
-#bindsym $mod+Ctrl+Down		move workspace to output down
-bindsym $mod+Up				focus up
-#bindsym $mod+Ctrl+Up		move workspace to output up
-bindsym $mod+Right 			focus right
-#bindsym $mod+Ctrl+Right		move workspace to output right
-bindsym $mod+Shift+Left		move left 30
-bindsym $mod+Shift+Down		move down 30
-bindsym $mod+Shift+Up		move up 30
-bindsym $mod+Shift+Right 	move right 30
-
-
 
 # Shut down and exit
 bindsym $mod+0 mode "$mode_system"
@@ -214,49 +174,19 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-#Start Applpications
-bindsym $mod+w					exec --no-startup-id $BROWSER
-bindsym $mod+Shift+w    exec --no-startup-id firefox --private-window www.duckduckgo.com
-bindsym $mod+m          exec --no-startup-id nemo
-#bindsym $mod+Shift+m   exec --no-startup-id gnome-disks
-bindsym $mod+p          exec --no-startup-id subl-newwindow
-#bindsym $mod+l         exec --no-startup-id qtcreator
-#bindsym $mod+o         exec --no-startup-id pamac-manager
-bindsym $mod+i          exec --no-startup-id thunderbird
-bindsym $mod+Shift+e    exec --no-startup-id dmenuunicode
-bindsym $mod+d 		exec --no-startup-id runmenu
-bindsym $mod+r 		exec --no-startup-id $term -e $FILE
-bindsym $mod+Ctrl+m 	exec --no-startup-id ddspawn pulsemixer
-bindsym $mod+x  	exec --no-startup-id keepmenu
-bindsym $mod+Print  	exec --no-startup-id shot
-bindsym $mod+Insert     exec --no-startup-id st -e synergyc --name arch-laptop -f arch
-
-
-bindsym $mod+Ctrl+Left             exec --no-startup-id i3resize left
-bindsym $mod+Ctrl+Right            exec --no-startup-id i3resize right
-bindsym $mod+Ctrl+Up               exec --no-startup-id i3resize up
-bindsym $mod+Ctrl+Down             exec --no-startup-id i3resize down
+set_from_resource $focused_border   i3_focused_border
+set_from_resource $unfocused_border i3_unfocused_border
+set_from_resource $child_border     i3_child_border
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-client.focused 					 #d79921 #d79921 #000000 #ff0000
-client.focused_inactive #282828 #282828 #1ABC9C #454948
-client.unfocused				 #282828 #282828 #000000 #454948
-client.urgent					 #FFCA28 #FFCA28 #000000 #454948
-client.placeholder			 #000000 #0c0c0c #ffffff #000000
+client.focused          $focused_border   $focused_border   #0009ff $child_border
+client.focused_inactive $unfocused_border $unfocused_border #0009ff $child_border
+client.unfocused        $unfocused_border $unfocused_border #0009ff $child_border
+client.urgent           #FFCA28           #FFCA28           #0009ff $child_border
+client.placeholder      #FF00F5           #FF00F5           #FF00F5 #FF00F5
 
-  client.background       #282828
-
-# Theme colors
-# class                   border  backgr. text    indic.   child_border
-  # client.focused          #d79921 #d79921 #80FFF9 #0D0E0F
-  # client.focused_inactive #282828 #282828 #1ABC9C #454948
-  # client.unfocused        #282828 #282828 #1ABC9C #454948
-  # client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  # client.placeholder      #000000 #0c0c0c #ffffff #000000
-
-  # client.background       #282828
-
+client.background       #FF00F5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
@@ -264,21 +194,3 @@ smart_gaps on
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
-
-bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume  exec amixer -q sset Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioMute exec amixer -q sset Master toggle && pkill -SIGRTMIN+10 i3blocks
-
-#Sreen brightness controls
-bindsym XF86MonBrightnessUp		 exec light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown		 exec light -U 10 # decrease screen brightness
-
-# Touchpad controls
-# bindsym XF86TouchpadToggle 		exec /some/path/toggletouchpad.sh # toggle touchpad
-
-# Media player controls
-bindsym XF86AudioPlay			exec playerctl play
-bindsym XF86AudioPause			exec playerctl pause
-bindsym XF86AudioNext			exec playerctl next
-bindsym XF86AudioPrev 			exec playerctl previous
-bindsym XF86TouchpadToggle 		exec touchpad-toggle

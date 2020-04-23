@@ -1,0 +1,26 @@
+#!/bin/bash
+
+isinstalled sane || exit
+
+# Extract filename extension and deduce the format
+ext=${1##*.}
+case $ext in
+	pnm|tiff|png|jpeg) format=$ext;;
+	pdf|jpg) isinstalled imagemagick || exit; format=jpeg ;;
+	*) echo "usage: scan filename.[pnm|tiff|png|jpeg|pdf]"; exit ;;
+esac
+
+# Test if filename is valid
+( echo "something" > "$1" ) || { echo "Invalid filename"; exit; }
+
+# For pdf, need to scan to jpeg and convert to pdf
+if [ $ext = pdf ]; then
+	temp_jpg=$(mktemp --suffix=.jpg)
+	temp_pdf=$(mktemp --suffix=.pdf)
+	scanimage --format=$format --mode Color --resolution 300 -x 210 -y 297 > $temp_jpg
+	convert $temp_jpg $temp_pdf
+	cp $temp_pdf "$1"
+else
+	scanimage --format=$format --mode Color --resolution 300 -x 210 -y 297 > "$1"
+fi
+

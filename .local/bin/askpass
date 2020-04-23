@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rofi -dmenu -password -i -no-fixed-num-lines -p "Password" \
+    -color-normal "#202020,#ebdbb2,#282828,#fea63c,#000000" \
+    -color-window "#d23d3d,#000000,#000000" \
+    -width 20 \
+    -font "mono 25" \
+    -location 2 2>/dev/null </dev/null

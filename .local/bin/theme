@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd ~/.local/share/theme &&
+rm current &&
+case $1 in
+    dark)  ln -rs default current ;;
+    light) ln -rs default-light current ;;
+    *)     echo "themes: dark light" ;;
+esac
+cp -f current/Xresources ~/.Xresources
+xrdb ~/.Xresources &&
+i3-msg restart

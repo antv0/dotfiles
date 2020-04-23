@@ -1,20 +1,6 @@
 #!/bin/sh
-# Gives a dmenu prompt to search DuckDuckGo.
-# Without input, will open DuckDuckGo.com.
-# URLs will be directly handed to the browser.
-# Anything else, it search it.
-browser=${BROWSER:-firefox}
+# open rofi and search duckduckgo
 
-pgrep -x rofi && exit
+string=$(rofi -dmenu -i -lines 0 -p "Search Duckduckgo")
 
-choice=$(rofi -matching normal -font "JetBrains Mono 20" -sort -show -dmenu -i -lines 0 -p "🦆") || exit 1
-
-if [ "$choice" = "🦆"  ]; then
-    $browser "https://duckduckgo.com"
-else
-    if echo "$choice" | grep "^(http:\/\/|https:\/\/)?[a-zA-Z0-9]+\.[a-zA-Z]+(/)?.*$"; then
-        $browser "$choice"
-    else
-        $browser "https://duckduckgo.com/?q=$choice&t=ffab&atb=v1-1"
-    fi
-fi
+$BROWSER "https://duckduckgo.com/?q=$string&t=ffab&atb=v1-1"

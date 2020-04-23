@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pgrep polybar && pkill polybar || startbar >/dev/null 2>&1

@@ -1,5 +1,7 @@
 #!/bin/sh
+
+isinstalled xorg-xprop || exit
 PID=$(xprop -id "$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')" | grep -m 1 PID | cut -d " " -f 3)
 PID=$(echo $(ps --ppid $PID -o pid | tail -n1))
-CWD=$(readlink /proc/"$PID"/cwd)
-cd $CWD && $TERMINAL
+cwd=$(readlink /proc/"$PID"/cwd)
+echo "$cwd"

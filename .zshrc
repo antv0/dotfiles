@@ -1,3 +1,9 @@
+autoload -U bashcompinit
+bashcompinit
+
+source /usr/share/bash-completion/completions/git 2>/dev/null
+
+
 # The following lines were added by compinstall
 zstyle :compinstall filename "$HOME/.zshrc"
 zstyle ':completion:*' menu select
@@ -8,12 +14,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# setopt correctall
 
-fpath=($HOME/.config/zsh $fpath)
- # __git_files () {
-    # _wanted files expl 'local files' _files
-# }
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
 
 HISTSIZE=2000
 HISTFILE="$HOME/.zsh_history"
@@ -22,13 +25,15 @@ setopt hist_ignore_all_dups
 
 setopt extendedglob
 
+#completion with aliases
+unsetopt complete_aliases
+
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 PROMPT="%B%$%F{yellow}%n %F{cyan}%~ %F{white}$ %f%b"
-# RPROMPT='%f[%F{yellow}%?%f]'
 
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc" # Load shortcut aliases
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
