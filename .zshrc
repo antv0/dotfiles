@@ -33,7 +33,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-PROMPT="%B%$%F{yellow}%n %F{cyan}%~ %F{white}$ %f%b"
+PROMPT="%B%$%F{blue}%n %F{green}%~ %F{white}$ %f%b"
 
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc" # Load shortcut aliases
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
