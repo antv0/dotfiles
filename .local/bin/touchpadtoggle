@@ -1,5 +1,7 @@
 #!/bin/bash
 
+isinstalled xorg-xinput || exit
+
 TOUCHPAD_ID=`xinput list | grep "Touchpad" | sed -n -e 's/^.*id=//p'|cut -f1`
 if xinput list $TOUCHPAD_ID | grep -q 'This device is disabled'; then
 	xinput enable $TOUCHPAD_ID

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+filename=$(readlink -f "$1")
+
+cd "$dir" || exit
+
+case "$filename" in
+    *.py)       python $filename ;;
+	*)          $filename ;;
+esac

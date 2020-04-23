@@ -1,8 +1,8 @@
 #!/bin/sh
 
-printf "Début de la mise à jour.\\n"
+echo "Updating..."
 
-sudo pacman -Syu
+yay -Syu
 
-printf "\\nMise à jour terminée.\\n<Entrée> pour quitter.\\n\\n"
+printf "\\nUp.\\n<Return> to exit.\\n\\n"
 read -r

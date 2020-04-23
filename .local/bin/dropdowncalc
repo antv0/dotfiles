@@ -1,2 +1,0 @@
-#!/bin/sh
-ifinstalled bc && echo "Bienvenu dans la calculatrice." && bc -lq

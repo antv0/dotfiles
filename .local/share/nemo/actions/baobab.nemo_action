@@ -1,0 +1,7 @@
+[Nemo Action]
+Name=Baobab
+
+Icon-Name=Vim
+Exec=baobab "%F"
+Selection=dir
+Extensions=any;

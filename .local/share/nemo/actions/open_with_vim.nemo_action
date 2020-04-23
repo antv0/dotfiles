@@ -3,6 +3,6 @@ Name=Ouvrir avec vim
 Comment=ouvrir %N avec vim
 
 Icon-Name=vim
-Exec=st -e nvim "%F"
+Exec=kitty -e nvim "%F"
 Selection=S
 Extensions=any;

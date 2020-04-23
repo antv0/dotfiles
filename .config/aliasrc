@@ -1,15 +1,10 @@
 #!/bin/sh
-alias mkd="mkdir -pv" \
-	calcurse="calcurse -D ~/.config/calcurse" \
-	p="sudo pacman" \
-	f="$FILE" \
-	e="$EDITOR" \
+alias p="sudo pacman" \
+	sv="sudo systemctl" \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
-	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
-	qtex="xelatex -interaction=nonstopmode -output-format='pdf'" \
 	icat="kitty +kitten icat"
 
 #on vérifie que nvim est installé et on remplce vim par nvim

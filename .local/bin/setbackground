@@ -1,0 +1,28 @@
+#!/bin/sh
+# Sets the background. If given an argument, will set file as background.
+method=tile #MARKER
+
+isinstalled xwallpaper || exit
+
+if [ -n $1 ]; then
+	while getopts "hm:" arg; do case $arg in
+		m) newmethod=$OPTARG ;;
+		*) echo "\
+Usage : setbackground [OPTION]... FILE... 
+Set the new desktop background.
+
+  -m [center|focus|stretch|tile|zoom]  default is tile"; exit;;
+		esac
+	done
+	shift $(( OPTIND - 1 ))
+
+	if [ -z $newmethod ]; then method="tile";
+	else echo "center focus stretch tile zoom" | grep -w $newmethod >/dev/null && method=$newmethod || { echo "Wrong argument"; exit; }
+	fi
+fi
+
+[ -n "$1" ] && cp "$1" ~/.config/background.png
+
+xwallpaper --$method ~/.config/background.png
+
+sed -i "s/^.*#MARKER$/method=$method #MARKER/g" $BASH_SOURCE

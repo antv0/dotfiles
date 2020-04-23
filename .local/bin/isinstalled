@@ -1,0 +1,14 @@
+#!/bin/sh
+#check if $1 is installed
+
+error(){
+	echo "$1 is not installed."
+	exit 1
+}
+
+success(){
+	exit 0
+}
+
+pacman -Qq $1 >/dev/null 2>&1 && success ||
+	command -v $1 >/dev/null && success || error $1
