@@ -331,7 +331,7 @@ set expandtab				" Insert spaces instead of tabs
 set smarttab
 
 set encoding=utf-8
-set number
+set number number relativenumber
 set mouse=a
 
 " folding settings
@@ -341,7 +341,8 @@ set foldlevel=99
 " Disable automatic comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-map <F5> :w <CR> :! ./f5 % 2>&1 \|\| run % <CR>
+map <F5> :w <CR>:! run % <CR>
+map <F6> :w <CR>:! i3 "[instance=\"dropdown_run\"] kill"; ddspawn run % <CR>
 
 " theming
 set background=dark

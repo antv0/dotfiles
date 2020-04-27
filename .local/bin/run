@@ -1,10 +1,9 @@
 #!/bin/sh
 
-filename=$(readlink -f "$1")
-
-cd "$dir" || exit
+filename=$1
 
 case "$filename" in
     *.py)       python $filename ;;
+    *.hs)       runghc $filename ;;
 	*)          $filename ;;
 esac

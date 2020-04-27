@@ -74,6 +74,7 @@ bindsym $mod+Ctrl+Down          exec --no-startup-id i3resize down
 bindsym $mod+Return             exec --no-startup-id $TERMINAL
 bindsym $mod+Shift+Return       exec --no-startup-id $TERMINAL -d $(currentdir)
 bindsym $mod+z                  exec --no-startup-id ddspawn $SHELL
+bindsym $mod+u                  exec --no-startup-id ddspawn run
 bindsym $mod+w                  exec --no-startup-id $BROWSER
 bindsym $mod+Shift+w            exec --no-startup-id firefox --private-window www.duckduckgo.com
 bindsym $mod+m                  exec --no-startup-id nemo
@@ -109,7 +110,7 @@ bindsym $mod+F3         restart
 bindsym $mod+F9         exec --no-startup-id dmenumount
 bindsym $mod+F10        exec --no-startup-id dmenuumount
 bindsym $mod+F11        exec --no-startup-id ducksearch
-bindsym $mod+F12        exec --no-startup-id $term -e nmtui
+bindsym $mod+F12        exec --no-startup-id $TERMINAL -e nmtui
 
 # bindsym $mod+Tab       workspace back_and_forth
 

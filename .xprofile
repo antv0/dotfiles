@@ -1,6 +1,6 @@
 #!/bin/sh
 
-startbar &
+xrdb ~/.Xresources &
 setbackground &		# Set the background
 setxkbmap -layout fr # Switch to FR 
 # xrandr --rate 100 &
@@ -11,4 +11,4 @@ picom &		# xcompmgr for transparency
 dunst &			# dunst for notifications
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 numlockx &
-xrdb ~/.Xresources &
+startbar &
