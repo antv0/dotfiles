@@ -82,7 +82,8 @@ bindsym $mod+Shift+e            exec --no-startup-id dmenuunicode
 bindsym $mod+d                  exec --no-startup-id runmenu
 bindsym $mod+Ctrl+m             exec --no-startup-id ddspawn pulsemixer
 bindsym $mod+x                  exec --no-startup-id keepmenu
-bindsym $mod+Print              exec --no-startup-id screenshot
+bindsym Print                   exec --no-startup-id screenshot
+bindsym $mod+Print              exec --no-startup-id screenshot -ask
 bindsym $mod+b                  exec --no-startup-id bartoggle
 
 # #---XF86 keys---# #

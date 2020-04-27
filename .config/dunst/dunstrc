@@ -1,7 +1,7 @@
 [global]
     monitor = 0
     follow = keyboard
-    geometry = "350x5-0+24"
+    geometry = "350x5-20+20"
     indicate_hidden = yes
     shrink = yes
     transparency = 20
@@ -10,7 +10,7 @@
     padding = 0
     horizontal_padding = 8
     frame_width = 3
-    frame_color = "#282828"
+    frame_color = "#000000"
 
     # Define a color for the separator.
     # possible values are:
@@ -82,14 +82,15 @@
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#458588"
-    foreground = "#ebdbb2"
-    timeout = 5
+    background = "#ffffff"
+    foreground = "#000000"
+    timeout = 10
 
 [urgency_critical]
-    background = "#cc2421"
-    foreground = "#ebdbb2"
-    frame_color = "#fabd2f"
+    background = "#ffffff"
+    foreground = "#c60808"
+    frame_color = "#c60808"
+
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to
