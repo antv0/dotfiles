@@ -1,7 +1,8 @@
 # vim: filetype=i3config
 
 # #---Basic Definitions---# #
-for_window [class="^.*"] border pixel 3, move position center
+set_from_resource $border_size      i3_border_size
+for_window [class="^.*"] border pixel $border_size, move position center
 gaps inner 15
 gaps outer 0
 set $mod Mod4

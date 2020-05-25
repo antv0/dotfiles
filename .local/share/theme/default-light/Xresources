@@ -1,6 +1,7 @@
 *.i3_focused_border:    #FFFFFF
 *.i3_unfocused_border:  #303030
 *.i3_child_border:      #000000
+*.i3_border_size:       3
 
 ! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
 rofi.color-normal: #ececec,  #131313,  #e6e6e6,  #fea63c,  #000000
