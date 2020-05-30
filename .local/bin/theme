@@ -4,6 +4,5 @@
 cd ~/.local/share/theme &&
 rm current
 ln -rs $1 current
-cp -f current/Xresources ~/.Xresources
 xrdb ~/.Xresources &&
 i3-msg restart
