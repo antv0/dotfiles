@@ -3,7 +3,7 @@
 # #---Basic Definitions---# #
 set_from_resource $border_size      i3_border_size
 for_window [class="^.*"] border pixel $border_size, move position center
-gaps inner 15
+gaps inner 5
 gaps outer 0
 set $mod Mod4
 focus_follows_mouse no
@@ -115,7 +115,7 @@ bindsym $mod+F3         restart
 bindsym $mod+F9         exec --no-startup-id dmenumount
 bindsym $mod+F10        exec --no-startup-id dmenuumount
 bindsym $mod+F11        exec --no-startup-id ducksearch
-bindsym $mod+F12        exec --no-startup-id $TERMINAL -e nmtui
+bindsym $mod+F12        exec --no-startup-id ddspawn nmtui
 
 # bindsym $mod+Tab       workspace back_and_forth
 

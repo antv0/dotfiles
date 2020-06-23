@@ -49,16 +49,32 @@ Plug 'calviken/vim-gdscript3'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tenfyzhong/axring.vim' " Enhance <c-a>, <c-x> ability to switch keywords.
-" Plug 'tpope/vim-eunuch'
-" Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-eunuch'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/vim-easy-align'
 Plug 'brooth/far.vim'
+
+" ==> debugger
+Plug 'puremourning/vimspector'
 
 call plug#end()
 
 set termguicolors
+let mapleader = ","
 
 " #################### Plugins configs ########################
+" ==> vimspector
+" let g:vimspector_enable_mappings = 'HUMAN'
+nmap <F7> <Plug>VimspectorContinue
+nmap <F8> <Plug>VimspectorPause
+nmap <F9> <Plug>VimspectorRestart
+nmap <F10> <Plug>VimspectorToggleBreakpoint
+nmap <F11> <Plug>VimspectorStepOver
+nmap <C-<F11>> <Plug>VimspectorStepInto
+nmap <S-<F11>> <Plug>VimspectorStepInto
+nmap <F12> :VimspectorReset <C-M>
+" :packadd! vimspector
+
 " ==> coc-highlight
 command Colorpick :call CocAction('pickColor')
 
@@ -360,7 +376,6 @@ let g:lsp_cxx_hl_use_text_props = 1
 " #################### Configs ################################
 filetype plugin indent on
 syntax on
-let mapleader = ","
 
 set clipboard=unnamed
 
@@ -408,10 +423,14 @@ set foldlevel=99
 " Disable automatic comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+map <F5> :w <CR>:! compile -d % <CR>
 map <F5> :w <CR>:! run % <CR>
-map <F6> :w <CR>:! i3 "[instance=\"dropdown_run\"] kill"; ddspawn run % ";" read -r<CR>
+map <F6> :w <CR>:! ddrun % <CR>
 
 " theming
 set background=dark
 colorscheme edge
 
+if !has('nvim')
+    set t_ut=""
+endif

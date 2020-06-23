@@ -3,8 +3,8 @@
 filename=$1
 
 case "$filename" in
-    *.cpp)      g++ -o "${filename%.*}" $filename && ./"${filename%.*}" ;;
-    *.c)        gcc -o "${filename%.*}" $filename && ./"${filename%.*}" ;;
+    *.cpp)      compile -O3 -fopenmp $filename && ./"${filename%.*}";;
+    *.c)        compile $filename && ./"${filename%.*}" ;;
     *.py)       python $filename ;;
     *.hs)       runghc $filename ;;
 	*)          $filename ;;
