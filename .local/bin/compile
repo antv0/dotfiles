@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# syntax: 
+# compile [-d] [compile flag] [filename]
+
+debug=""
+while getopts 'd' option 2>/dev/null
+do
+    case "${option}" in
+        d) debug="-ggdb"
+           shift;;
+    esac
+done
+
+filename="${@: -1}"
+flags="${@:1:$(($# - 1))}"
+
+case "$filename" in
+    *.cpp) g++ $debug $flags -o "${filename%.*}" $filename ;;
+    *.c)   gcc $debug $flags -o "${filename%.*}" $filename ;;
+esac
