@@ -5,7 +5,10 @@ alias p="sudo pacman" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
-	icat="kitty +kitten icat"
+	icat="kitty +kitten icat" \
+    mpv="swallow-tabs mpv" \
+    vlc="swallow-tabs vlc" \
+    imv="swallow-tabs imv"
 
 #on vérifie que nvim est installé et on remplce vim par nvim
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
