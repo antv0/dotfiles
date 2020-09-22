@@ -15,6 +15,8 @@ done
 filename="${@: -1}"
 flags="${@:1:$(($# - 1))}"
 
+echo $flags
+
 case "$filename" in
     *.cpp) g++ $debug $flags -o "${filename%.*}" $filename ;;
     *.c)   gcc $debug $flags -o "${filename%.*}" $filename ;;

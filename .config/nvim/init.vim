@@ -2,9 +2,9 @@
 
 " Plug installation {{{:
 if has('nvim')
-	if empty(glob('~/.config/nvim/autoload/plug.vim'))
-	  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    if empty(glob('~/.config/nvim/autoload/plug.vim'))
+	  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	  autocmd VimEnter * PlugInstall
 	endif
 endif
@@ -19,7 +19,7 @@ endif
 " }}}
 
 " #################### Plugins list ##########################################
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 " ==> LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'autozimu/LanguageClient-neovim', {
@@ -56,6 +56,9 @@ Plug 'brooth/far.vim'
 
 " ==> debugger
 Plug 'puremourning/vimspector'
+
+" ==> Opencl
+Plug 'petRUShka/vim-opencl'
 
 call plug#end()
 
@@ -423,7 +426,7 @@ set foldlevel=99
 " Disable automatic comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-map <F5> :w <CR>:! compile -d % <CR>
+map <F5> :w <CR>:! compile -lsfml-graphics -lsfml-window -lsfml-system % <CR>
 map <F5> :w <CR>:! run % <CR>
 map <F6> :w <CR>:! ddrun % <CR>
 
