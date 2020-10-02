@@ -8,7 +8,8 @@ alias p="sudo pacman" \
 	icat="kitty +kitten icat" \
     mpv="swallow-tabs mpv" \
     vlc="swallow-tabs vlc" \
-    imv="swallow-tabs imv"
+    imv="swallow-tabs imv" \
+    zathura="swallow-tabs zathura"
 
 #on vérifie que nvim est installé et on remplce vim par nvim
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.

@@ -5,10 +5,10 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-fallocate -l 8192M /swapfile
+dd if=/dev/zero of=/swapfile bs=1M count=8192 status=progress
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
 
 echo "# swap
-/swapfile none swap default 0 0" >> /etc/fstab
+/swapfile none swap default 0 0" >> /etc/fstabp
