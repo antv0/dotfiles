@@ -1,9 +1,11 @@
 [Default Applications]
-image/jpeg=imv.desktop
-image/gif=imv.desktop
-image/png=imv.desktop
+text/plain=text.desktop;
+application/postscript=pdf.desktop;
+application/pdf=pdf.desktop;
+image/png=sxiv.desktop
+image/jpeg=img.desktop;
+image/gif=img.desktop;
 
 [Added Associations]
-image/jpeg=imv.desktop;
-image/gif=imv.desktop;
-image/png=imv.desktop;
+text/x-python=userapp-xdg-open-MS30R0.desktop;
+image/png=sxiv.desktop;

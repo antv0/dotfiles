@@ -39,7 +39,8 @@ Plug 'sheerun/vim-polyglot'
 " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'crusoexia/vim-monokai', {'for': 'python'}
 Plug 'lifepillar/vim-gruvbox8'
-Plug 'sainnhe/edge'
+" Plug 'sainnhe/edge'
+Plug 'jaredgorski/spacecamp'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 " Plug 'Yggdroot/indentLine'
 Plug 'antv0/ayu-vim'
@@ -139,8 +140,8 @@ let g:niji_light_colours = g:rbpt_colorpairs
 "}}}
 
 " ==> edge colorscheme
-let g:edge_style = 'neon'
-let g:lightline = {'colorscheme' : 'edge'}
+" let g:edge_style = 'neon'
+" let g:lightline = {'colorscheme' : 'edge'}
 
 " ==> ayu colorscheme
 let ayucolor="light"  " for light version of theme
@@ -432,7 +433,7 @@ map <F6> :w <CR>:! ddrun % <CR>
 
 " theming
 set background=dark
-colorscheme edge
+colorscheme spacecamp
 
 if !has('nvim')
     set t_ut=""

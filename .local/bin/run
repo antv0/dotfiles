@@ -12,5 +12,5 @@ case "$filename" in
     *.c)        compile $filename && ./"${filename%.*}" ;;
     *.py)       python $filename ;;
     *.hs)       runghc $filename ;;
-    *)          $filename ;;
+    *)          ./$filename ;;
 esac

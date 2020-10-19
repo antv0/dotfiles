@@ -1,14 +1,16 @@
 #!/bin/sh
 alias p="sudo pacman" \
 	sv="sudo systemctl" \
+	rrm="/bin/rm" \
+	rm="trash" \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
 	icat="kitty +kitten icat" \
-    mpv="swallow-tabs mpv" \
+    # mpv="swallow-tabs mpv" \
     vlc="swallow-tabs vlc" \
-    imv="swallow-tabs imv" \
+    sxiv="swallow-tabs sxiv" \
     zathura="swallow-tabs zathura"
 
 #on vérifie que nvim est installé et on remplce vim par nvim

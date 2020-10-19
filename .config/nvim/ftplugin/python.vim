@@ -1,4 +1,4 @@
-colorscheme monokai
+" colorscheme monokai
 
 " hi semshiLocal           ctermfg=209 guifg=#ff875f
 " hi semshiGlobal          ctermfg=214 guifg=#ffaf00
