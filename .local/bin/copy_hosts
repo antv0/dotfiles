@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [[ $EUID -ne 0 ]]; then
+  echo "You must run this with superuser privileges." 2>&1
+  exit 1
+fi
+
+SSH=$1
+
+# test internet connection
+ping -c 1 ifconfig.me >/dev/null || exit
+
+IFS=$'\n'
+for line in $(sudo -u "$SUDO_USER" ssh "$SSH" cat addresses)
+do
+    if [ $HOSTNAME != $(echo $line | cut -d ' ' -f2) ]
+    then
+        hn=$(echo $line | cut -d ' ' -f2)
+        ad=$(echo $line | cut -d ' ' -f1)
+        sed -i "s/.*$hn$/$ad    $hn/g" /etc/hosts
+    fi
+done
+unset IFS
+
