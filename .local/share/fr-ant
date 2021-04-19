@@ -45,6 +45,7 @@ xkb_symbols "basic-" {
     key <BKSL>	{ [  asterisk,         mu,   dead_grave,   dead_breve ]	};
     key <AB01>	{ [         w,          W,  Greek_omega,  Greek_OMEGA ]	};
     key <AB02>	{ [         x,          X,     Greek_xi,     Greek_XI ]	};
+    key <AB03>	{ [         c,          C,    Greek_chi,    trademark ]	};
     key <AB05>	{ [         b,          B,   Greek_beta, rightsinglequotemark ] };
     key <AB06>	{ [         n,          N,     Greek_nu,            n_subscript ]	};
     key <AB07>	{ [     comma,   question,   dead_acute, dead_doubleacute ] };

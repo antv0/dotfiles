@@ -17,10 +17,10 @@ esac
 if [ $ext = pdf ]; then
 	temp_jpg=$(mktemp --suffix=.jpg)
 	temp_pdf=$(mktemp --suffix=.pdf)
-	scanimage --format=$format --mode Color --resolution 300 -x 210 -y 297 > $temp_jpg
+	scanimage --format=$format --mode Color -x 210 -y 297 > $temp_jpg
 	convert $temp_jpg $temp_pdf
 	cp $temp_pdf "$1"
 else
-	scanimage --format=$format --mode Color --resolution 300 -x 210 -y 297 > "$1"
+	scanimage --format=$format --mode Color -x 210 -y 297 > "$1"
 fi
 
