@@ -9,7 +9,7 @@ ping -c 1 $(echo $SSH | cut -d'@' -f2) || exit
 ADDRESS=$(curl -s ifconfig.me)
 DATE=$(ssh $SSH date +%H:%M_%d.%m.%Y)
 
-LAST_ADDRESS=$(ssh $SSH cat addresses | grep " $(hostname) " | tail -n 1 | cut -d' ' -f1 )
+LAST_ADDRESS=$(ssh $SSH cat addresses | grep "$HOSTNAME" | tail -n 1 | cut -d' ' -f1 )
 
 # check if the address is different from the last one
 echo $ADDRESS $LAST_ADDRESS

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+s=$(ps -eo %cpu,comm --sort=-%cpu --no-headers | \
+    head | \
+    awk -v np=$(nproc) \
+    '{printf "%6.2f% ",$1/np; print substr($0,index($0,$2))}')
+
+notify-send "$s"

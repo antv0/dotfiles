@@ -7,10 +7,12 @@ then
         rm -f /tmp/autologin
 fi
 
+# HOSTS addresses
+
 # Adds `~/.scripts` and all subdirectories to $PATH
 export PATH=$PATH:~/.local/bin/
 export EDITOR="nvim"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export TERM=$TERMINAL
 export BROWSER="firefox"
 export READER="xreader"
@@ -24,4 +26,3 @@ echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] > /dev/null && source "$
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx &> /dev/null
 
 if [[ $(tty) == /dev/tty* ]] ; then setleds -D +num ; fi #enable Numlock 
-

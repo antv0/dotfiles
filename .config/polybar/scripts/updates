@@ -1,0 +1,4 @@
+#!/bin/sh
+
+n=$(pacman -Qu | grep -v "\[ignoré\]" | wc -l)
+[ $n == "0" ] || echo " %{F-}$n" && echo " "
