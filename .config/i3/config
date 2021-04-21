@@ -16,6 +16,7 @@ for_window [instance="dropdown_*"] floating enable
 for_window [instance="dropdown_*"] move scratchpad
 for_window [instance="dropdown_*"] sticky enable
 for_window [instance="dropdown_*"] scratchpad show
+for_window [instance="dropdown_*"] resize set 1200 700
 for_window [instance="dropdown_*"] move position center
 for_window [class="Matplotlib"] floating enable
 for_window [instance="Godot_Engine"] floating enable
