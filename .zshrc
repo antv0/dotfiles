@@ -16,7 +16,7 @@ compinit
 
 
 # Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
+# kitty + complete setup zsh | source /dev/stdin
 
 HISTSIZE=2000
 HISTFILE="$HOME/.zsh_history"
@@ -100,3 +100,5 @@ key[Control-e]="${terminfo[kRIT5]}"
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 
+
+source /home/ant/.config/broot/launcher/bash/br
