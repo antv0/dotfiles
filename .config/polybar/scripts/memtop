@@ -1,6 +1,8 @@
 #!/bin/sh
 
-s=$(ps axo rss,comm \
+s=$(free | grep 'Mem' | awk '{printf("%.1f/%.1f (Gib)", $3/(1024*1024), $2/(1024*1024))}')
+
+s=$(echo "Usage: $s" && ps axo rss,comm \
 | awk '{ proc_list[substr($0,index($0,$2))] += $1; } END \
 { for (proc in proc_list) { printf("%d\t%s\n", proc_list[proc],proc); }}' \
 | sort -n | tail -n 10 | sort -rn \
