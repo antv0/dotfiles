@@ -2,6 +2,6 @@
 
 [ -f "$HOME/.xprofile" ] && . ~/.xprofile
 
-export DESKTOP_SESSION=i3
+export DESKTOP_SESSION=bspwm
 exec i3
 

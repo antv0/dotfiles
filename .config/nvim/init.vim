@@ -427,9 +427,11 @@ set foldlevel=99
 " Disable automatic comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-map <F5> :w <CR>:! compile -lsfml-graphics -lsfml-window -lsfml-system % <CR>
+map <F5> :w <CR>:! compile % <CR>
 map <F5> :w <CR>:! run % <CR>
 map <F6> :w <CR>:! ddrun % <CR>
+
+nnoremap ZZ :q!<CR>
 
 " theming
 set background=dark
