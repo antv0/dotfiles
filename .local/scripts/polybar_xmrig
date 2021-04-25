@@ -1,0 +1,62 @@
+#!/bin/sh
+
+isinstalled tmux && isinstalled xmrig || exit
+
+#grab the balance on minexmr
+balance() {
+    curl -fs "https://minexmr.com/api/pool/get_wid_stats?address=$XMR_ADDRESS_MINE" | awk '{match($0, /"balance":"([0-9]+)"/,a); printf("%.5f", a[1]/(10**12))}'
+}
+
+#grab your total hashrate on minexmr
+total_hashrate() {
+    curl -fs "https://minexmr.com/api/pool/get_wid_stats?address=$XMR_ADDRESS_MINE"  | awk '{match($0, /"hashrate":(([0-9]|\.)*)/, a); printf("%.1f", a[1])}'
+}
+
+# grab the price of menero in € on coinbase
+price() {
+    curl -fs 'https://www.coinbase.com/api/v2/assets/prices/monero?base=EUR' | awk '{match($0, /"latest":"((\.|[0-9])*)"/, a); printf("%.3f", a[1])}'
+}
+
+
+info() {
+    p=$(price)
+    b=$(balance)
+    echo $b $p | awk '{printf("Balance: %.5f XMR = %.3f €\n", $1, $1*$2)}'
+    echo "Monero price:" $p "€"
+    if tmux ls -F "#{session_name}" 2>/dev/null | grep -q "^xmrig$";
+    then
+        # get the hashrate
+        tmux send-keys -t xmrig h || exit
+        tmux capture-pane -p -t xmrig | tail -n 2 | head -n 1 | awk '{print "Local Hashrate (60s): " $6 " H/s"}'
+    fi
+    echo "MineXMR hashrate:" $(total_hashrate)
+}
+
+start_xmrig() {
+    tmux new -d -s xmrig ~/.local/scripts/monero.sh $1
+}
+
+#start xmrig with half cpu
+start_xmrig_half() {
+    start_xmrig $(($(nproc)/2))
+}
+
+stop_xmrig() {
+    tmux send-keys -t xmrig C-c
+}
+
+case $1 in
+    status)
+        if tmux ls -F "#{session_name}" 2>/dev/null | grep -q "^xmrig$"; then
+            echo "Mining"
+        else
+            echo "Not mining"
+        fi ;;
+    mine|half)
+        if tmux ls -F "#{session_name}" 2>/dev/null | grep -q "^xmrig$"; then
+            stop_xmrig
+        else
+            [ $1 = "half" ] && start_xmrig_half || start_xmrig
+        fi ;;
+    info) notify-send "$(info)"
+esac
