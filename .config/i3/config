@@ -84,7 +84,7 @@ bindsym $mod+z                  exec --no-startup-id ddspawn $SHELL
 bindsym $mod+u                  exec --no-startup-id ddspawn run
 bindsym $mod+w                  exec --no-startup-id $BROWSER
 bindsym $mod+Shift+w            exec --no-startup-id firefox --private-window www.duckduckgo.com
-bindsym $mod+m                  exec --no-startup-id nemo
+bindsym $mod+m                  exec --no-startup-id thunar
 bindsym $mod+i                  exec --no-startup-id thunderbird
 bindsym $mod+Shift+e            exec --no-startup-id dmenuunicode
 bindsym $mod+d                  exec --no-startup-id runmenu
