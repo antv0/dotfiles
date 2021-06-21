@@ -7,7 +7,8 @@ alias p="sudo pacman" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
-    nnn="nnn -e"
+    nnn="nnn -e" \
+    sxiv="~/.local/scripts/sxiv-folder.sh"
 
 #on vérifie que nvim est installé et on remplce vim par nvim
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.

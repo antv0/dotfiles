@@ -79,11 +79,12 @@ bindsym $mod+Ctrl+Down          exec --no-startup-id i3resize down
 
 # #---Start Applpications---# #
 bindsym $mod+Return             exec --no-startup-id $TERMINAL
+bindsym $mod+r                  exec --no-startup-id $TERMINAL -e nnn
 bindsym $mod+Shift+Return       exec --no-startup-id cd $(currentdir) && $TERMINAL
 bindsym $mod+z                  exec --no-startup-id ddspawn $SHELL
 bindsym $mod+u                  exec --no-startup-id ddspawn run
 bindsym $mod+w                  exec --no-startup-id $BROWSER
-bindsym $mod+Shift+w            exec --no-startup-id firefox --private-window www.duckduckgo.com
+bindsym $mod+Shift+w            exec --no-startup-id $BROWSER --private-window www.duckduckgo.com
 bindsym $mod+m                  exec --no-startup-id thunar
 bindsym $mod+i                  exec --no-startup-id thunderbird
 bindsym $mod+Shift+e            exec --no-startup-id dmenuunicode

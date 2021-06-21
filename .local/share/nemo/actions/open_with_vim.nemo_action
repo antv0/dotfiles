@@ -1,8 +1,0 @@
-[Nemo Action]
-Name=Ouvrir avec vim
-Comment=ouvrir %N avec vim
-
-Icon-Name=vim
-Exec=kitty -e nvim "%F"
-Selection=S
-Extensions=any;
