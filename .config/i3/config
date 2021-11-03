@@ -21,7 +21,6 @@ for_window [instance="dropdown_*"] scratchpad show
 for_window [instance="dropdown_*"] resize set 1200 700
 for_window [instance="dropdown_*"] move position center
 for_window [class="Matplotlib"] floating enable
-for_window [instance="Godot_Engine"] floating enable
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -39,11 +38,6 @@ bindsym $mod+Tab            split toggle
 bindsym $mod+t              layout toggle
 bindsym $mod+Shift+t        border toggle
 
-bindsym $mod+Ctrl+h         exec --no-startup-id i3resize left
-bindsym $mod+Ctrl+j         exec --no-startup-id i3resize down
-bindsym $mod+Ctrl+k         exec --no-startup-id i3resize up
-bindsym $mod+Ctrl+l         exec --no-startup-id i3resize right
-
 bindsym $mod+s              gaps inner current plus 5
 bindsym $mod+Shift+s        gaps inner current minus 5
 
@@ -59,6 +53,11 @@ bindsym $mod+Shift+h        move left 30
 bindsym $mod+Shift+j        move down 30
 bindsym $mod+Shift+k        move up 30
 bindsym $mod+Shift+l        move right 30
+
+bindsym $mod+Ctrl+h         exec --no-startup-id i3resize left
+bindsym $mod+Ctrl+l         exec --no-startup-id i3resize right
+bindsym $mod+Ctrl+k         exec --no-startup-id i3resize up
+bindsym $mod+Ctrl+j         exec --no-startup-id i3resize down
 
 # #---Arrow Keys---# #
 bindsym $mod+Left           focus left
@@ -113,7 +112,6 @@ bindsym XF86AudioPrev           exec playerctl previous
 bindsym XF86TouchpadToggle      exec touchpadtoggle
 
 # #---Function Buttons---# #
-bindsym $mod+F1         exec --no-startup-id groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf -Kutf8 | zathura -
 bindsym $mod+F2         exec --no-startup-id displayselect
 bindsym $mod+F3         restart
 bindsym $mod+F9         exec --no-startup-id dmenumount

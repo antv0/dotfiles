@@ -15,35 +15,3 @@ rofi.font: mono 14
 Sxiv.background: black
 Sxiv.foreground: #e6db74
 Sxiv.font: mono 8
-
-St.font: Hack:size=15
-St.color0: #1b1d1e
-St.color1: #f92672
-St.color2: #a6e22e
-St.color3: #fd971f
-St.color4: #66d9ef
-St.color5: #9e6ffe
-St.color6: #5e7175
-St.color7: #ccccc6
-St.color8: #505354
-St.color9: #ff669d
-St.color10: #beed5f
-St.color11: #e6db74
-St.color12: #66d9ef
-St.color13: #9e6ffe
-St.color14: #a3babf
-St.color15: #f8f8f2
-St.background: #121212
-St.foreground: #a0a0a0
-St.cursorColor: #000000
-St.cursorReverseColor: #000000
-! St.termname:
-! St.shell:
-! St.minlatency:
-! St.maxlatency:
-! St.blinktimeout:
-! St.bellvolume:
-! St.tabspaces:
-! St.borderpx:
-! St.cwscale:
-! St.chscale:

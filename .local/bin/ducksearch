@@ -1,6 +1,0 @@
-#!/bin/sh
-# open rofi and search duckduckgo
-
-string=$(rofi -dmenu -i -lines 0 -p "Search Duckduckgo")
-
-$BROWSER "https://duckduckgo.com/?q=$string&t=ffab&atb=v1-1"

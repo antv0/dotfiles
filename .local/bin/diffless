@@ -1,3 +1,0 @@
-#/bin/sh
-
-diff $* --color=always | less -r
