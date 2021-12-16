@@ -29,6 +29,8 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'wellle/targets.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 lua <<EOF
@@ -132,7 +134,7 @@ endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+inoremap <silent><expr> <C-l> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -227,4 +229,18 @@ nnoremap ZZ :q!<CR>
 
 noremap <f2> :tabclose <CR>
 
+" exit term insert mode with esc
+tnoremap <Esc> <C-\><C-n>
+
+tnoremap <C-w><C-w> <C-\><C-n><C-w><C-w>
+
+inoremap <A-h> <Left>
+inoremap <A-j> <Down>
+inoremap <A-k> <Up>
+inoremap <A-l> <Right>
+
+
 set cc=80
+set spelllang=fr
+filetype plugin on
+filetype plugin indent on
