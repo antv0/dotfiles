@@ -21,6 +21,7 @@ for_window [instance="dropdown_*"] scratchpad show
 for_window [instance="dropdown_*"] resize set 1200 700
 for_window [instance="dropdown_*"] move position center
 for_window [class="Matplotlib"] floating enable
+for_window [class="matplotlib"] floating enable
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -86,7 +87,7 @@ bindsym $mod+w                  exec --no-startup-id $BROWSER
 bindsym $mod+Shift+w            exec --no-startup-id $BROWSER --private-window www.duckduckgo.com
 bindsym $mod+m                  exec --no-startup-id thunar
 bindsym $mod+i                  exec --no-startup-id thunderbird
-bindsym $mod+Shift+e            exec --no-startup-id dmenuunicode
+bindsym $mod+Shift+e            exec --no-startup-id rofi -show emoji -modi emoji
 bindsym $mod+d                  exec --no-startup-id runmenu
 bindsym $mod+Ctrl+m             exec --no-startup-id ddspawn pulsemixer
 bindsym $mod+x                  exec --no-startup-id keepmenu

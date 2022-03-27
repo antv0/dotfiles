@@ -48,7 +48,11 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+require'nvim-tree'.setup()
 EOF
+
+
+noremap <S-TAB> :NvimTreeToggle<CR>
 
 noremap f :lua require'hop'.hint_words()<CR>
 
@@ -200,17 +204,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 nnoremap <space>e :CocCommand explorer<CR>
 
-let g:vimspector_enable_mappings = 'HUMAN'
-
-set clipboard=unnamed
-
-noremap y "+y
-noremap yy "+yy
-noremap p "+p
-noremap Y "*y
-noremap Y "*yy
-noremap P "*p
-noremap x "+x
+set clipboard=unnamedplus
 
 set tabstop=4
 set shiftwidth=4
@@ -220,6 +214,9 @@ set smartindent
 set encoding=utf-8
 set number
 set mouse=a
+
+" cut to black hole register
+" nnoremap d "_d
 
 nnoremap s ciw
 
@@ -238,6 +235,8 @@ inoremap <A-h> <Left>
 inoremap <A-j> <Down>
 inoremap <A-k> <Up>
 inoremap <A-l> <Right>
+
+set scrolloff=4
 
 
 set cc=80
